@@ -7,7 +7,14 @@ height: 100vh;
 margin: 0;
 }
 
-div{
+
+
+:root {
+    --cell-size: 100px;
+    --mark-size: calc(var(--cell-size) * .9);
+  }
+
+.Container{
     max-width: 300px;
     max-height: 300px;
     height:100%;
@@ -17,11 +24,54 @@ div{
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+
+.item.x::before,
+.item.x::after,
+.item.kreis::backdrop,
+.item.kreis::after{
+    background-color: black;
+}
+
+
+
+
+
+
+.Container.x .item:not(.x):not(.kreis):hover::before,
+.Container.x .item:not(.x):not(.kreis):hover::after,
+.Container.kreis .item:not(.x):not(.kreis):hover::before,
+.Container.kreis .item:not(.x):not(.kreis):hover::after
+{
+
+background-color: lightgrey;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .item{
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px black solid;
+    position: relative;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    cursor: pointer;
+}
+
+.item.x,
+.item.kreis{
+cursor: not-allowed;
 }
 
 .item:first-child,
@@ -47,5 +97,63 @@ border-top: none;
 {
 border-bottom: none;
 }
+
+
+.item.x::before,
+.item.x::after,
+.Container.x .item:not(.x):not(.kreis):hover:before,
+.Container.x .item:not(.x):not(.kreis):hover::after
+{
+    content: "";
+    position: absolute;
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    
+}
+
+
+.item.x::before,
+.Container.x .item:not(.x):not(.kreis):hover::before
+{
+    transform: rotate(45deg);
+}
+
+
+.item.x::after,
+.Container.x .item:not(.x):not(.kreis):hover::after{
+    transform: rotate(-45deg);
+}
+
+
+
+.item.kreis::before,
+.item.kreis::after,
+.Container.kreis .item:not(.x):not(.kreis):hover::before,
+.Container.kreis .item:not(.x):not(.kreis):hover::after
+{
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    
+}
+
+.item.kreis::before,
+.Container.kreis .item:not(.x):not(.kreis):hover::before{
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+
+.item.kreis::after,
+.Container.kreis .item:not(.x):not(.kreis):hover::after{
+    width: calc(var(--mark-size) * .7) ;
+    height: calc(var(--mark-size) * .7) ;
+    background-color: white;
+}
+
+
+
+
+
 
 
