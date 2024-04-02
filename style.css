@@ -27,7 +27,7 @@ margin: 0;
 
 .item.x::before,
 .item.x::after,
-.item.kreis::backdrop,
+.item.kreis::before,
 .item.kreis::after{
     background-color: black;
 }
@@ -149,6 +149,33 @@ border-bottom: none;
     width: calc(var(--mark-size) * .7) ;
     height: calc(var(--mark-size) * .7) ;
     background-color: white;
+}
+
+
+
+
+.winning-message{
+display: none;
+position: fixed;
+top: 0;
+bottom: 0;
+right: 0;
+left: 0;
+background-color: rgba(0, 0, 0, .9);
+justify-content: center;
+align-items: center;
+font-size: 35px;
+color: white;
+}
+
+
+.winning-message button{
+    font-size: 35px;
+}
+
+
+.winning-message .show{
+    display: flex;
 }
 
 
